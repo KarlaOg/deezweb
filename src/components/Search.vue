@@ -3,8 +3,8 @@
       <h1>Recherche</h1>
       <hr>
 
-      <form class="filterform">
-        <input type="search" placeholder="Tapez un nom ou un lieu ...">
+      <form class="filterform" @submit="callMusic">
+        <input type="search" placeholder="Tapez un nom ou un lieu ..." v-model="searchMusic">
         
         <label for="filter">Filtrer par:</label>
         <select name="filterBy" v-model="searchBy">
@@ -14,7 +14,10 @@
           <option value="mostpopular">Les plus populaires</option>
           <option value="beststars">Les mieux notés</option>
         </select>
+       
+        <button type="submit">GO</button>
       </form>
+      
 
       <div class="musiclist">
         <!-- Liste de tous les utilisateurs ici -->
@@ -23,9 +26,26 @@
 </template>
 
 <script>
-export default {
-  name: 'Search',
+import MusicService from "@/services/MusicService.js";
 
+export default {
+  name: "Search",
+  data() {
+    return {
+      searchMusic: "",
+      searchBy: ""
+    };
+  },
+  methods: {
+    callMusic(){
+      MusicService.search(this.searchMusic)
+      .then(results=> console.log(results))
+    }
+    /*callMusic: function() {
+      MusicService.search(this.searchMusic)
+      .then(results => console.log(results))
+    }*/ 
+  }
 };
 </script>
 

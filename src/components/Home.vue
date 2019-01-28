@@ -6,13 +6,11 @@
 </template>
 
 <script>
-import MusicService  from '@/services/MusicService.js'
-import Search  from '@/components/Search.vue'
+import Search from "@/components/Search.vue";
 export default {
-  name: 'Home',
-  component:{
-  }
-}; 
+  name: "Home",
+  component: {}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

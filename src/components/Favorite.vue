@@ -1,16 +1,13 @@
 <template>
-     <Navbar/>
+  <div> <p>
+     favorite</p>
+  </div>
+   
 </template>
 
 <script>
 export default {
-    
   name: 'Favorite',
-  components: {
-   
-  
-}
-
 }
 </script>
 

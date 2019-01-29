@@ -21,30 +21,35 @@
 
       <div class="musiclist">
         <!-- Liste de tous les utilisateurs ici -->
+        <MusicCard v-for="song in results" :song="song" :key="song.id"/>
       </div>
     </div>
 </template>
 
 <script>
 import MusicService from "@/services/MusicService.js";
+import MusicCard from "./MusicCard.vue";
 
 export default {
   name: "Search",
   data() {
     return {
       searchMusic: "",
-      searchBy: ""
+      searchBy: "",
+      results: null,
+      song: null
     };
   },
+  components: {
+    MusicCard
+  },
   methods: {
-    callMusic(){
-      MusicService.search(this.searchMusic)
-      .then(results=> console.log(results))
+    callMusic: function() {
+      MusicService.search(this.searchMusic).then(results =>
+        this.results = results
+      );
+      console.log(this.results);
     }
-    /*callMusic: function() {
-      MusicService.search(this.searchMusic)
-      .then(results => console.log(results))
-    }*/ 
   }
 };
 </script>

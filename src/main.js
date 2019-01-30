@@ -2,11 +2,19 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHome , faSearch, faHeartbeat} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faHome, faSearch, faHeartbeat)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 Vue.use(VueRouter)
 
 import Home from '@/components/Home.vue'
 import Search from '@/components/Search.vue'
 import Favorite from '@/components/Favorite.vue'
+
 const router = new VueRouter({
   routes :[
     { name: 'home', path: '/', component: Home },

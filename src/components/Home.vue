@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
-   home
-  <Search  />
+    <h1>Bienvenue sur Deezweb</h1>
+    <p>L'application qui permet facilement d'écouter de la musique</p>
   </div>
 </template>
 
@@ -26,7 +26,21 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-a {
-  color: #42b983;
+.hello{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  margin-left: 12rem;
+  height: 20rem;
+  width: 75%;
+  background-color:#e5e7e7;
+  border-radius: 5px;
+}
+.hello > * {
+  padding-left: 1rem; 
+}
+.hello > h1 {
+  font-size: 55px;
+  font-weight: 100; 
 }
 </style>

@@ -1,24 +1,29 @@
 <template>
-    <div class="container centered">
-      <h1>Recherche</h1>
-      <hr>
-
+    <div class="container">
+      <div class="info">
+     <h1>Recherche</h1>
+      <p>Recherchez un titre sur Deezer en utilisant le formulaire suivant:</p>
+   
+      </div>
+     
+       <div class="lines"></div>
       <form class="filterform" @submit="callMusic">
-        <input type="search" placeholder="Tapez un nom ou un lieu ..." v-model="searchMusic">
+          <label for="search">Titre:</label>
+        <input type="text" placeholder="Eminem" v-model="searchMusic">
         
         <label for="filter">Filtrer par:</label>
         <select name="filterBy" v-model="searchBy">
           <option value="album">Album</option>
           <option value="artiste">Artiste</option>
-          <option value="musique">Musique</option>
+          <option value="musique" selected >Musique</option>
           <option value="mostpopular">Les plus populaires</option>
           <option value="beststars">Les mieux notés</option>
         </select>
        
-        <button type="submit">GO</button>
+        <button type="submit" class="btn">Go</button>
       </form>
-      
-
+     <div class="lines"></div>
+<br>
       <div class="musiclist">
         <!-- Liste de tous les utilisateurs ici -->
         <MusicCard v-for="song in results" :song="song" :key="song.id"/>
@@ -45,8 +50,8 @@ export default {
   },
   methods: {
     callMusic: function() {
-      MusicService.search(this.searchMusic).then(results =>
-        this.results = results
+      MusicService.search(this.searchMusic).then(
+        results => (this.results = results)
       );
       console.log(this.results);
     }
@@ -58,14 +63,56 @@ export default {
 .musiclist {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center; 
 }
 .musiclist > * {
   box-sizing: border-box;
-  width: calc(94% / 3);
-  margin: 1%;
+  border-style: solid; 
+  border-width: 1px; 
+  border-color: #e5e7e7;
+  
 }
 
 .filterform {
   margin: 2em 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+}
+input {
+  width: 25%;
+  padding: 10px;
+  border-radius:5px; 
+  margin-left: 1rem;
+  margin-right: 2rem; 
+  box-sizing: border-box;
+}
+select{
+  width: 15%;
+  height: 2rem;
+  border-radius:5px; 
+  margin-left: 1rem;
+  margin-right: 2rem; 
+  box-sizing: border-box;
+}
+.btn{
+  background-color: #2E7DF6; 
+  color: white; 
+  border-radius: 5px; 
+  margin-left: 10px; 
+  border-color: #2E7DF6; 
+  padding: 7px; 
+  font-size: 16px; 
+}
+
+.lines{
+  height: 1px;
+  background-color:  #ebebe4; 
+  width: 75%; 
+  margin-left:12rem; 
+}
+.info{
+   margin-left:12rem; 
 }
 </style>

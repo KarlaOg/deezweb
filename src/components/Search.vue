@@ -7,17 +7,17 @@
       </div>
      
        <div class="lines"></div>
-      <form class="filterform" @submit="callMusic">
+      <form class="filterform" @submit.prevent="callMusic">
           <label for="search">Titre:</label>
-        <input type="text" placeholder="Eminem" v-model="searchMusic">
+        <input type="text" placeholder="Eminem" v-model="allSearch.searchMusic">
         
         <label for="filter">Filtrer par:</label>
-        <select name="filterBy" v-model="searchBy">
-          <option value="album">Album</option>
-          <option value="artiste">Artiste</option>
-          <option value="musique" selected >Musique</option>
-          <option value="mostpopular">Les plus populaires</option>
-          <option value="beststars">Les mieux notés</option>
+        <select name="filterBy" v-model="allSearch.searchBy">
+          <option value="ALBUM">Album</option>
+          <option value="ARTIST">Artiste</option>
+          <option value="TRACK" selected >Musique</option>
+          <option value="RANKING">Les plus populaires</option>
+          <option value="RATING">Les mieux notés</option>
         </select>
        
         <button type="submit" class="btn">Go</button>
@@ -39,21 +39,23 @@ export default {
   name: "Search",
   data() {
     return {
-      searchMusic: "",
-      searchBy: "",
+      allSearch:{ 
+        searchMusic: "",
+        searchBy: "",
+      }, 
       results: null,
       song: null
     };
+
   },
   components: {
     MusicCard
   },
   methods: {
     callMusic: function() {
-      MusicService.search(this.searchMusic).then(
+      MusicService.search(this.allSearch).then(
         results => (this.results = results)
       );
-      console.log(this.results);
     }
   }
 };

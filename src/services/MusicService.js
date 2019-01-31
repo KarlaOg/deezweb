@@ -4,7 +4,7 @@ const API_ENDPOINT = 'https://api.deezer.com'
 
 export default{
     search: function(q){
-        return fetchJsonp(`${API_ENDPOINT}/search?q=${q}&output=jsonp`)
+        return fetchJsonp(`${API_ENDPOINT}/search?q=${q.searchMusic}&order={q.searchBy}_ASC&output=jsonp`)
         .then(response => response.json())
         .then(response => response.data)
         .then(response =>{

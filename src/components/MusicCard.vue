@@ -28,16 +28,16 @@ export default {
      
     }
   },
-  methods:{
-    addMusic(){
-      const favourite = localStorage.getItem('favourite')
-      if(!favourite){
-        favourite = JSON.parse(localStorage.getItem('favourite'));
-        console.log(favourite);  
-      }
-    }
+  // methods:{
+  //   addMusic(){
+  //     const favourite = localStorage.getItem('favourite')
+  //     if(!favourite){
+  //       favourite = JSON.parse(localStorage.getItem('favourite'));
+  //       console.log(favourite);  
+  //     }
+  //   }
   
-  }
+  // }
 
 };
 </script>

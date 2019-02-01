@@ -10,6 +10,7 @@
 export default {
   name: 'Favorite',
 }
+
 </script>
 
 <style scoped>

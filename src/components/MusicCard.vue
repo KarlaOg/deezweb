@@ -5,12 +5,14 @@
       <img :src="song.album.cover">
     </figure>
     <div>
-   <h4>{{song.album.title}}</h4>
-    <i>{{song.title}}</i>
+
+    <h4>{{song.title}}</h4>
     <i>{{song.artist.name}}</i>
+    <i>{{song.album.title}}</i>
     <figure>
-      <audio controls :src="song.preview"></audio>
+      <audio controls :src="song.preview"></audio> 
     </figure>
+    <button type="submit" class="btn"> <font-awesome-icon icon="heart"/> Favoris </button>
     </div>
   </article>
 </template>
@@ -26,6 +28,7 @@ export default {
 <style lang ="scss" scoped>
 
 .music-card {
+  margin: 2rem; 
   display: inline-flex;
   align-items: stretch;
   overflow: auto;
@@ -34,7 +37,6 @@ export default {
 }
 
 .music-card > figure {
-  margin: 0.25em;
   text-align: center;
   display: flex;
   align-items: center;
@@ -47,5 +49,24 @@ export default {
 }
 figure {
   margin: 0;
+}
+
+.btn{
+  background-color: rgb(255, 124, 129);
+  color: white;
+  border-radius: 5px; 
+  margin-left: 10px; 
+  border-color:  rgb(255, 124, 129); 
+  padding: 7px; 
+  font-size: 16px; 
+}
+.btn:hover{
+  background-color: rgb(219, 109, 112);
+  color: white;
+  border-radius: 5px; 
+  margin-left: 10px; 
+  border-color: rgb(219, 109, 112); 
+  padding: 7px; 
+  font-size: 16px; 
 }
 </style>

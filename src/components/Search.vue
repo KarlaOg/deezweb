@@ -67,13 +67,7 @@ export default {
   flex-wrap: wrap;
   justify-content: center; 
 }
-.musiclist > * {
-  box-sizing: border-box;
-  border-style: solid; 
-  border-width: 1px; 
-  border-color: #e5e7e7;
-  
-}
+
 
 .filterform {
   margin: 2em 0;

@@ -1,34 +1,51 @@
 <template>
     <article class="music-card">
-
     <figure>
       <img :src="song.album.cover">
     </figure>
     <div>
-
-    <h4>{{song.title}}</h4>
-    <i>{{song.artist.name}}</i>
-    <i>{{song.album.title}}</i>
-    <figure>
-      <audio controls :src="song.preview"></audio> 
-    </figure>
-    <button type="submit" class="btn"> <font-awesome-icon icon="heart"/> Favoris </button>
+      <h4>{{song.title_short}}</h4>
+      <i>{{song.artist.name}}</i>
+      <button type="submit" class="btn"  @click.prevent="addMusic"> <font-awesome-icon icon="heart"/></button>
+      <br>
+      <i>{{song.album.title}}</i>
+      <figure>
+        <audio controls :src="song.preview"></audio> 
+      </figure>
     </div>
   </article>
 </template>
 
 <script>
+import Search from "@/components/Search.vue";
+
 export default {
   name: "MusicCard",
-  props: ["song"]
+  props: ["song"],
+  data() {
+    return{
+      musics: [], 
+     
+    }
+  },
+  methods:{
+    addMusic(){
+      const favourite = localStorage.getItem('favourite')
+      if(!favourite){
+        favourite = JSON.parse(localStorage.getItem('favourite'));
+        console.log(favourite);  
+      }
+    }
+  
+  }
+
 };
 </script>
 
 
 <style lang ="scss" scoped>
-
 .music-card {
-  margin: 2rem; 
+  margin: 2rem;
   display: inline-flex;
   align-items: stretch;
   overflow: auto;
@@ -51,22 +68,34 @@ figure {
   margin: 0;
 }
 
-.btn{
+.btn {
   background-color: rgb(255, 124, 129);
   color: white;
-  border-radius: 5px; 
-  margin-left: 10px; 
-  border-color:  rgb(255, 124, 129); 
-  padding: 7px; 
-  font-size: 16px; 
+  border-radius: 5px;
+  margin-left: 10px;
+  border-color: rgb(255, 124, 129);
+  padding: 5px;
+  font-size: 12px;
 }
-.btn:hover{
+.btn:hover {
   background-color: rgb(219, 109, 112);
   color: white;
-  border-radius: 5px; 
-  margin-left: 10px; 
-  border-color: rgb(219, 109, 112); 
-  padding: 7px; 
-  font-size: 16px; 
+  border-radius: 5px;
+  margin-left: 10px;
+  border-color: rgb(219, 109, 112);
+  padding: 5px;
+  font-size: 12px;
+}
+.heart {
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+}
+h4 {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 }
 </style>
